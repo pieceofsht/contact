@@ -174,10 +174,11 @@ void SortContact(struct Contact* ps)
             {
                 if(strcmp(ps->data[j].name,ps->data[j+1].name)>0)
                 {
-                    struct PeopleInfo temp;
+                     struct PeopleInfo temp;
                      temp=ps->data[j];
                      ps->data[j]=ps->data[j+1];
                      ps->data[j+1]=temp;
+                     
                 }
             }
         }
