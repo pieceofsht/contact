@@ -174,13 +174,10 @@ void SortContact(struct Contact* ps)
             {
                 if(strcmp(ps->data[j].name,ps->data[j+1].name)>0)
                 {
-                     char temp[30]="";
-                     int t;
-                    strcpy(temp,ps->data[j].name);strcpy(ps->data[j].name,ps->data[j+1].name);strcpy(ps->data[j+1].name,temp);
-                    strcpy(temp,ps->data[j].gender);strcpy(ps->data[j].gender,ps->data[j+1].gender);strcpy(ps->data[j+1].gender,temp);
-                    strcpy(temp,ps->data[j].tele);strcpy(ps->data[j].tele,ps->data[j+1].tele);strcpy(ps->data[j+1].tele,temp);
-                    strcpy(temp,ps->data[j].addr);strcpy(ps->data[j].addr,ps->data[j+1].addr);strcpy(ps->data[j+1].addr,temp);
-                    t=ps->data[j].age;ps->data[j].age=ps->data[j+1].age;ps->data[j+1].age=t;
+                    struct PeopleInfo temp;
+                     temp=ps->data[j];
+                     ps->data[j]=ps->data[j+1];
+                     ps->data[j+1]=temp;
                 }
             }
         }
