@@ -26,7 +26,6 @@ int CheckCapacity(struct Contact* ps)
     if (ps->size==ps->capacity)
     {
         struct PeopleInfo* ptr=realloc(ps->data,((ps->capacity)+2)*sizeof(struct PeopleInfo));
-        printf("%d",sizeof(ps->data));
         if (ptr!=NULL)
         {
             ps->data=ptr;
@@ -119,6 +118,7 @@ void DelContact(struct Contact* ps)
             ps->data[i]=ps->data[i+1];
         }
         ps->size--;
+        printf("删除成功\n");
     }
 }
 
@@ -201,5 +201,6 @@ void SortContact(struct Contact* ps)
                 }
             }
         }
+        printf("排序成功\n");
     }
 }
