@@ -12,25 +12,43 @@ void menu()
 
 void InitContact(struct Contact* ps)
 {
-    int i;
-    for(i=0;i<MAX;i++)
+    ps->data=calloc(sizeof(struct PeopleInfo),DEFAULT_SIZE);
+    if (ps==NULL)
     {
-        memset(ps->data,0,sizeof(ps->data));
-        ps->size=0;
+        return;
     }
+    ps->size=0;
+    ps->capacity=DEFAULT_SIZE;
 }
 
-
+int CheckCapacity(struct Contact* ps)
+{
+    if (ps->size==ps->capacity)
+    {
+        struct PeopleInfo* ptr=realloc(ps->data,((ps->capacity)+2)*sizeof(struct PeopleInfo));
+        printf("%d",sizeof(ps->data));
+        if (ptr!=NULL)
+        {
+            ps->data=ptr;
+            ps->capacity+=2;
+            printf("扩容成功\n");
+            return 1;
+        }
+        else
+        {
+        printf("扩容失败\n");
+        return 0;
+        }
+    }
+    return 1;
+}
 
 
 void AddContact(struct Contact* ps)
 {
-    if(ps->size==MAX)
-    {
-        printf("通讯录已满\n");
-    }
-    else
-    {
+    
+        if(CheckCapacity(ps))
+        {
         printf("请输入姓名:>");
         scanf("%s",ps->data[ps->size].name);
         printf("请输入年龄:>");
@@ -43,7 +61,8 @@ void AddContact(struct Contact* ps)
         scanf("%s",ps->data[ps->size].addr);
         ps->size++;
         printf("输入成功\n");
-    }
+        }
+
 }
 
 void ShowContact(struct Contact* ps)

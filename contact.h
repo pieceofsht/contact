@@ -1,8 +1,11 @@
 #ifndef CONTACT
 #define CONTACT
+
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
+
+#define DEFAULT_SIZE 3
 #define MAX 1000
 #define MAX_NAME 20
 #define MAX_GENDER 6
@@ -31,8 +34,9 @@ struct PeopleInfo
 
 struct Contact
 {
-    struct PeopleInfo data[MAX];
-    int size;
+    struct PeopleInfo* data;
+    int capacity; //记录最大容量
+    int size; //记录已有元素个数
 };
 
 void menu();
