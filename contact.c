@@ -10,7 +10,6 @@ void menu()
     printf("****************************\n");
 }
 
-
 void InitContact(struct Contact* ps)
 {
     ps->data=calloc(sizeof(struct PeopleInfo),DEFAULT_SIZE);
