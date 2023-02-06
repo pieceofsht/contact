@@ -37,6 +37,8 @@ int main()
             printf("输入错误");
             break;
         }
+        system("pause");
+        system("cls");
     } while (input);
     
 }
